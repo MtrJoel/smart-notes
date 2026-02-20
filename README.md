@@ -1,22 +1,9 @@
-## 🚧 Proyecto en curso: Smart Notes (JavaScript)
+# Smart Notes – Browser Extension (JavaScript)
 
-**Smart Notes** es una extensión de navegador que permite:
-- Guardar texto seleccionado de cualquier web  
-- Organizar notas por páginas  
-- Acceder rápidamente a tus apuntes  
-- Enfocarse en aprendizaje activo
+Extensión para guardar fragmentos importantes de cualquier página web y organizar notas de estudio.
 
-**Estado actual:**
-- [x] MVP funcional  
-- [ ] Mejorar UI  
-- [ ] Organización por etiquetas  
-- [ ] Sincronización local
+## ¿Por qué este proyecto?
+Estoy construyendo Smart Notes para aprender JavaScript con un caso real de uso y crear una herramienta útil para estudiantes.
 
-**Tecnologías:**
-- JavaScript  
-- HTML  
-- CSS  
-- APIs del navegador
-
-**Objetivo del proyecto:**
-Construir un producto útil mientras aprendo desarrollo web real (no solo teoría).
+## Estado
+Proyecto en desarrollo (MVP funcional).
