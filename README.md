@@ -9,7 +9,7 @@ Extensión para guardar fragmentos importantes de cualquier página web y organi
 
 El proyecto nace de una necesidad común al estudiar o investigar en internet: encontrar información valiosa y no tener una forma rápida y estructurada de conservarla. Smart Notes busca resolver ese problema de manera simple y funcional.
 
-Mientras estoy construyendo Smart Notes aprendo más de lleno JavaScript con un caso real de uso y creando esta maravillosa herramienta útil para estudiantes.
+Mientras estoy construyendo Smart Notes aprendo más de lleno JavaScript con un caso real de uso  creando esta maravillosa herramienta útil para estudiantes.
 
 ## Estado
 Proyecto en desarrollo (MVP funcional).
