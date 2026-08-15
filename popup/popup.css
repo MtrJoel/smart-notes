@@ -102,6 +102,85 @@ button:hover {
   align-items: center;
 }
 
+.export-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.export-btn {
+  flex: 1;
+  background: #eef2ff;
+  color: #4338ca;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.export-btn:hover {
+  background: #e0e7ff;
+}
+
+.comment {
+  font-size: 12px;
+  color: #4338ca;
+  background: #eef2ff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.comment-toggle {
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.comment-toggle:hover {
+  color: #4338ca;
+}
+
+.comment-editor {
+  margin-top: 6px;
+}
+
+.comment-editor.hidden {
+  display: none;
+}
+
+.comment-editor textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 6px;
+}
+
+.comment-editor .save-comment {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  float: none;
+}
+
+.comment-editor .save-comment:hover {
+  background: #1d4ed8;
+}
+
 button.open {
   background: #2563eb;
   color: white;
@@ -149,4 +228,3 @@ li {
 button {
   cursor: pointer;
 }
-

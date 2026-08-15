@@ -14,46 +14,47 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
+chrome.action.setBadgeBackgroundColor({ color: "#2563eb" });
+
+function setBadge(tabId, count) {
+  chrome.action.setBadgeText({
+    tabId,
+    text: count > 0 ? String(count) : ""
+  });
+}
+
+async function refreshBadgeForTab(tabId, url) {
+  if (!url || !/^https?:/.test(url)) {
+    setBadge(tabId, 0);
+    return;
+  }
+  const { notes = [] } = await chrome.storage.local.get({ notes: [] });
+  const count = notes.filter(n => n.url === url).length;
+  setBadge(tabId, count);
+}
+
+chrome.tabs.onActivated.addListener(({ tabId }) => {
+  chrome.tabs.get(tabId, (tab) => refreshBadgeForTab(tabId, tab.url));
+});
+
+chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
+  if (info.status === "complete") {
+    refreshBadgeForTab(tabId, tab.url);
+  }
+});
+
+chrome.runtime.onMessage.addListener((message, sender) => {
+  if (message.type === "UPDATE_BADGE" && sender.tab) {
+    setBadge(sender.tab.id, message.count);
+  }
+});
+
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "OPEN_NOTE") {
-    chrome.tabs.create({ url: message.url }, (tab) => {
-      chrome.tabs.onUpdated.addListener(function listener(tabId, info) {
-        if (tabId === tab.id && info.status === "complete") {
-          chrome.tabs.onUpdated.removeListener(listener);
-
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            args: [message.text],
-            func: (text) => {
-              const walker = document.createTreeWalker(
-                document.body,
-                NodeFilter.SHOW_TEXT
-              );
-
-              let node;
-              while ((node = walker.nextNode())) {
-                const index = node.nodeValue.indexOf(text);
-                if (index !== -1) {
-                  const range = document.createRange();
-                  range.setStart(node, index);
-                  range.setEnd(node, index + text.length);
-
-                  const mark = document.createElement("mark");
-                  mark.style.background = "#fde68a";
-                  mark.style.padding = "2px";
-
-                  range.surroundContents(mark);
-                  mark.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                  });
-                  return;
-                }
-              }
-            }
-          });
-        }
-      });
-    });
+    // content.js ya se encarga de resaltar y hacer scroll cuando la página
+    // carga y encuentra notas guardadas para esa URL — no duplicamos esa
+    // lógica aquí (hacerlo generaba una condición de carrera entre dos
+    // intentos de resaltado simultáneos).
+    chrome.tabs.create({ url: message.url });
   }
 });

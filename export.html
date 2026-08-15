@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exportar notas — Smart Notes</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px;
+      color: #1f2937;
+    }
+    h1 { font-size: 22px; margin-bottom: 4px; }
+    .subtitle { color: #6b7280; font-size: 13px; margin-bottom: 28px; }
+    .note {
+      border-left: 3px solid #2563eb;
+      padding: 8px 16px;
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+    }
+    .note small { display: block; color: #6b7280; font-size: 11px; margin-bottom: 4px; }
+    .note p { font-size: 14px; line-height: 1.5; margin-bottom: 6px; white-space: pre-wrap; }
+    .note a { font-size: 11px; color: #2563eb; word-break: break-all; }
+    .empty { color: #6b7280; font-size: 14px; }
+    @media print {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Mis notas</h1>
+  <div class="subtitle" id="subtitle"></div>
+  <div id="notes"></div>
+
+  <script src="export.js"></script>
+</body>
+</html>
